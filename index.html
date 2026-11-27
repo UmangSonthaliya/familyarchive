@@ -1,96 +1,449 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Family Archive</title>
-  <meta name="description" content="Family Archive keeps a family's records of land, bank accounts, deposits, insurance, loans and disputes in one safe place, so the next generation knows what exists and how to claim it.">
+  <title>Family Archive: what your family owns and owes, in one safe place</title>
+  <meta name="description" content="Family Archive keeps a family's land, bank accounts, deposits, insurance, loans and disputes in one safe place, in Hindi and English, so the next generation knows what exists and how to claim it.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&family=Tiro+Devanagari+Hindi&display=swap">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f5d50'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+  <script>
+    // Hindi or English: the visitor's last choice, else their browser's language. English without scripts.
+    (function () {
+      var lang = null;
+      try { lang = localStorage.getItem('fa-lang'); } catch (e) {}
+      if (lang !== 'hi' && lang !== 'en') lang = /^hi\b/i.test(navigator.language || '') ? 'hi' : 'en';
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+    })();
+  </script>
 </head>
 <body>
-  <header class="top">
-    <div class="wrap">
-      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">F</span>Family Archive</a>
-      <nav aria-label="Main">
-        <a href="./" aria-current="page">Home</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <!-- The logo, defined once. Swap this symbol when the final logo is chosen. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="16" fill="#2f5d50"/>
+      <text x="32" y="45" font-family="Georgia, serif" font-size="38" fill="#fff" text-anchor="middle">F</text>
+    </symbol>
+  </svg>
+
+  <div class="nav-shell">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="./"><svg class="brand-mark" aria-hidden="true"><use href="#logo"/></svg>Family Archive</a>
+      <div class="nav-links">
+        <a href="#features"><span class="en">What it does</span><span class="hi" lang="hi">क्या करता है</span></a>
+        <a href="#how"><span class="en">How it works</span><span class="hi" lang="hi">कैसे शुरू करें</span></a>
+        <a href="#trust"><span class="en">Safety</span><span class="hi" lang="hi">सुरक्षा</span></a>
+        <a href="#questions"><span class="en">Questions</span><span class="hi" lang="hi">सवाल</span></a>
+      </div>
+      <div class="nav-actions">
+        <button class="lang" type="button" id="lang-toggle" aria-label="Switch language / भाषा बदलें">
+          <span class="en" lang="hi">हिंदी</span><span class="hi" lang="en">English</span>
+        </button>
+        <a class="btn btn-primary" href="https://familyarchives.duckdns.org/"><span class="en">Open the app</span><span class="hi" lang="hi">ऐप खोलें</span></a>
+      </div>
+    </nav>
+  </div>
 
   <main>
+    <!-- Hero -->
     <div class="wrap hero">
-      <p class="hi" lang="hi">परिवार की हर ज़रूरी जानकारी, एक सुरक्षित जगह।</p>
-      <h1>Your family's records, in one safe place.</h1>
-      <p class="lede">Family Archive helps parents write down what the family owns and owes: land, bank accounts, fixed
-        deposits, insurance, loans and disputes. When the time comes, their children know what exists, where the papers are,
-        and how to claim it.</p>
-      <span class="status">Private pilot · by invitation</span>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow"><span class="en">For families in India</span><span class="hi" lang="hi">भारत के परिवारों के लिए</span></p>
+          <h1>
+            <span class="en">What you own, owe and know, kept for your family.</span>
+            <span class="hi" lang="hi">आपके पास क्या है, किसका कितना बाकी है: सब परिवार के लिए एक जगह।</span>
+          </h1>
+          <p class="lede">
+            <span class="en">Land, bank accounts, FDs, insurance, money lent and borrowed, and the disputes in between. Write it down once, in Hindi or English, and the people you choose will know where everything is and how to claim it.</span>
+            <span class="hi" lang="hi">ज़मीन, बैंक खाते, FD, बीमा, दिया और लिया उधार, और चल रहे विवाद। एक बार हिंदी या English में लिख दीजिए, और जिन्हें आप चुनें, उन्हें पता रहेगा कि क्या कहाँ है और कैसे मिलेगा।</span>
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://familyarchives.duckdns.org/"><span class="en">Start your family's record</span><span class="hi" lang="hi">परिवार का रिकॉर्ड शुरू करें</span> →</a>
+            <a class="btn btn-ghost" href="#how"><span class="en">See how it works</span><span class="hi" lang="hi">देखें कैसे काम करता है</span></a>
+          </div>
+          <p class="hero-note"><span class="en">Free during the pilot · Sign in with a code on WhatsApp</span><span class="hi" lang="hi">पायलट के दौरान मुफ़्त · WhatsApp पर आए कोड से लॉग-इन</span></p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="phone">
+            <div class="m-title"><span class="en">Verma family</span><span class="hi" lang="hi">वर्मा परिवार</span></div>
+            <div class="m-banner"><span class="en">4 details read from your papers are waiting for you to check.</span><span class="hi" lang="hi">आपके काग़ज़ों से पढ़ी गई 4 बातें आपकी जाँच का इंतज़ार कर रही हैं।</span></div>
+            <div class="m-card">
+              <div class="m-row">
+                <div class="m-ring" style="--p: 38%"><span>9</span></div>
+                <div>
+                  <div class="m-strong"><span class="en">How ready is your family?</span><span class="hi" lang="hi">आपका परिवार कितना तैयार है?</span></div>
+                  <div class="m-green"><span class="en">A good start</span><span class="hi" lang="hi">अच्छी शुरुआत हुई है</span></div>
+                  <div class="m-muted"><span class="en">9 things in place · 15 to go</span><span class="hi" lang="hi">9 बातें पूरी · 15 बाकी</span></div>
+                </div>
+              </div>
+              <div class="m-muted" style="margin-top:10px"><span class="en">Next step</span><span class="hi" lang="hi">अगला काम</span></div>
+              <div class="m-strong"><span class="en">Mutation (dakhil-kharij) is not recorded as done</span><span class="hi" lang="hi">दाख़िल-ख़ारिज हुआ दर्ज नहीं है</span></div>
+              <span class="m-btn"><span class="en">Open this record</span><span class="hi" lang="hi">यह रिकॉर्ड खोलें</span></span>
+            </div>
+            <div class="m-card">
+              <div class="m-row">
+                <span class="m-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21V11M12 14c-3 0-5-2-6-5 3 0 5 1 6 4M12 12c2-3 4-4 7-4-1 3-3 5-7 5"/></svg></span>
+                <div><div class="m-strong"><span class="en">Rampur east plot</span><span class="hi" lang="hi">रामपुर पूरब वाला खेत</span></div><div class="m-muted"><span class="en">Agricultural land</span><span class="hi" lang="hi">खेती की ज़मीन</span></div></div>
+              </div>
+              <div class="m-bar"><i style="width:46%"></i></div>
+              <div class="m-muted" style="margin-top:4px"><span class="en">6 of 13 key details written</span><span class="hi" lang="hi">13 ज़रूरी बातों में से 6 दर्ज</span></div>
+            </div>
+            <div class="m-card">
+              <div class="m-row">
+                <span class="m-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 10l9-6 9 6M5 10v8M19 10v8M9 10v8M15 10v8M3 20h18"/></svg></span>
+                <div><div class="m-strong"><span class="en">SBI savings account</span><span class="hi" lang="hi">SBI बचत खाता</span></div><div class="m-muted"><span class="en">Bank account</span><span class="hi" lang="hi">बैंक खाता</span></div></div>
+              </div>
+              <div class="m-bar"><i style="width:75%"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <section>
+    <!-- Quick facts -->
+    <div class="wrap">
+      <div class="facts">
+        <div class="fact"><strong><span class="en">हिंदी</span><span class="hi" lang="hi">हिंदी</span></strong><span><span class="en">The whole app in Hindi and English</span><span class="hi" lang="hi">पूरा ऐप हिंदी और English में</span></span></div>
+        <div class="fact"><strong><span class="en">1 photo</span><span class="hi" lang="hi">1 फ़ोटो</span></strong><span><span class="en">is enough to start a record</span><span class="hi" lang="hi">से रिकॉर्ड शुरू हो जाता है</span></span></div>
+        <div class="fact"><strong>8</strong><span><span class="en">kinds of property, money and disputes</span><span class="hi" lang="hi">तरह की संपत्ति, लेन-देन और विवाद</span></span></div>
+        <div class="fact"><strong>₹0</strong><span><span class="en">during the pilot</span><span class="hi" lang="hi">पायलट के दौरान</span></span></div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section id="features">
       <div class="wrap">
-        <h2>What it does</h2>
-        <p class="hi-sub" lang="hi">यह क्या करता है</p>
-        <div class="grid">
-          <div class="card">
-            <h3>Record</h3>
-            <p>Fill in simple forms, photograph a passbook or policy, or speak a voice note in Hindi.</p>
-            <span class="hi" lang="hi">फ़ॉर्म भरें, कागज़ की फ़ोटो लें, या हिंदी में बोलकर बताएं।</span>
+        <div class="section-head">
+          <p class="eyebrow"><span class="en">What it does</span><span class="hi" lang="hi">यह क्या करता है</span></p>
+          <h2><span class="en">Built for the way families really keep things.</span><span class="hi" lang="hi">वैसे ही बना है, जैसे परिवार सच में चीज़ें रखते हैं।</span></h2>
+          <p class="lede"><span class="en">A khatiyan in a red file, a passbook in the almirah, a loan everyone remembers differently. Family Archive starts from there.</span><span class="hi" lang="hi">लाल फ़ाइल में खतियान, अलमारी में पासबुक, और एक उधार जो सबको अलग-अलग याद है। Family Archive वहीं से शुरू होता है।</span></p>
+        </div>
+
+        <div>
+          <article class="feature">
+            <div class="feature-text">
+              <span class="tag"><span class="en">Photo first</span><span class="hi" lang="hi">पहले फ़ोटो</span></span>
+              <h3><span class="en">Photograph the paper. The assistant fills in the record.</span><span class="hi" lang="hi">काग़ज़ की फ़ोटो लीजिए। सहायक रिकॉर्ड भर देगा।</span></h3>
+              <p><span class="en">Take a photo of a passbook, khatiyan or policy. The assistant works out what it is, starts the right record and suggests what it read. Nothing is saved until you say "correct".</span><span class="hi" lang="hi">पासबुक, खतियान या पॉलिसी की फ़ोटो लीजिए। सहायक पहचानता है कि यह क्या है, सही रिकॉर्ड शुरू करता है और जो पढ़ा वह सुझाता है। आपके "सही है" कहे बिना कुछ सेव नहीं होता।</span></p>
+              <ul>
+                <li><span class="en">Every suggestion shows the exact words it came from, and which page.</span><span class="hi" lang="hi">हर सुझाव के साथ वे शब्द दिखते हैं जिनसे वह आया, और कौन सा पेज।</span></li>
+                <li><span class="en">You agree for each file before it is read. Account and policy numbers are never taken from it.</span><span class="hi" lang="hi">हर फ़ाइल पढ़ने से पहले आपकी हाँ ली जाती है। खाता या पॉलिसी नंबर इससे कभी नहीं लिए जाते।</span></li>
+              </ul>
+            </div>
+            <div class="feature-visual" aria-hidden="true">
+              <div class="phone">
+                <div class="m-title"><span class="en">State Bank of India</span><span class="hi" lang="hi">STATE BANK OF INDIA</span></div>
+                <div class="m-muted" style="margin:-6px 2px 10px"><span class="en">Bank account · 4 to check</span><span class="hi" lang="hi">बैंक खाता · 4 जाँचनी हैं</span></div>
+                <div class="m-card" style="background:var(--ochre-wash);border-color:#ebcf94">
+                  <div class="m-label"><span class="en">Suggested</span><span class="hi" lang="hi">सुझाव</span></div>
+                  <div class="m-strong">STATE BANK OF INDIA</div>
+                  <div class="m-source"><span class="en">From your paper, page 1</span><span class="hi" lang="hi">आपके काग़ज़ से, पेज 1</span><br>“STATE BANK OF INDIA”</div>
+                  <div class="m-btns"><span class="m-btn">✓ <span class="en">Correct</span><span class="hi" lang="hi">सही है</span></span><span class="m-btn-out">✕ <span class="en">Wrong</span><span class="hi" lang="hi">ग़लत है</span></span></div>
+                </div>
+                <div class="m-card" style="background:var(--ochre-wash);border-color:#ebcf94">
+                  <div class="m-label"><span class="en">Suggested</span><span class="hi" lang="hi">सुझाव</span></div>
+                  <div class="m-strong">Rampur Bazaar</div>
+                  <div class="m-source"><span class="en">From your paper, page 1</span><span class="hi" lang="hi">आपके काग़ज़ से, पेज 1</span><br>“Branch: Rampur Bazaar, Dist. Bhojpur”</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature">
+            <div class="feature-text">
+              <span class="tag"><span class="en">Voice notes</span><span class="hi" lang="hi">आवाज़ से</span></span>
+              <h3><span class="en">Say it out loud, in your own words.</span><span class="hi" lang="hi">अपनी ज़ुबान में बोलकर बताइए।</span></h3>
+              <p><span class="en">Some things were never written down: the oral batwara of 1994, who farms the field on batai, which file has the khatiyan. Record a voice note in Hindi and the assistant picks out the details.</span><span class="hi" lang="hi">कुछ बातें कभी लिखी ही नहीं गईं: 1994 का ज़ुबानी बँटवारा, खेत कौन बटाई पर जोतता है, खतियान किस फ़ाइल में है। हिंदी में आवाज़ का नोट रिकॉर्ड कीजिए, सहायक बातें निकाल देगा।</span></p>
+              <ul>
+                <li><span class="en">Tap "Listen" to hear the exact moment a detail was heard.</span><span class="hi" lang="hi">"सुनें" दबाकर वह हिस्सा सुनिए जहाँ से बात ली गई।</span></li>
+                <li><span class="en">Your recording stays with the record, for your family to hear later.</span><span class="hi" lang="hi">आपकी आवाज़ रिकॉर्ड के साथ रहती है, ताकि परिवार बाद में सुन सके।</span></li>
+              </ul>
+            </div>
+            <div class="feature-visual" aria-hidden="true">
+              <div class="phone">
+                <div class="m-title"><span class="en">Check these details</span><span class="hi" lang="hi">इन बातों को जाँचें</span></div>
+                <div class="m-card">
+                  <div class="m-row"><span class="m-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21V11M12 14c-3 0-5-2-6-5 3 0 5 1 6 4M12 12c2-3 4-4 7-4-1 3-3 5-7 5"/></svg></span><div><div class="m-strong"><span class="en">Rampur east plot</span><span class="hi" lang="hi">रामपुर पूरब वाला खेत</span></div><div class="m-muted"><span class="en">Partition (batwara)</span><span class="hi" lang="hi">बँटवारा</span></div></div></div>
+                  <div style="font:22px/1.3 var(--serif);margin:10px 0 2px"><span class="en">Oral only</span><span class="hi" lang="hi">सिर्फ़ ज़ुबानी</span></div>
+                  <div class="m-source">
+                    <div style="display:flex;justify-content:space-between;align-items:center"><span>〰 <span class="en">From your voice, at 00:05</span><span class="hi" lang="hi">आपकी आवाज़ से, 00:05 पर</span></span><span class="m-green">▶ <span class="en">Listen</span><span class="hi" lang="hi">सुनें</span></span></div>
+                    <div style="margin-top:4px">“1994 में हम तीन भाइयों में बँटवारा हुआ था, पर वह सिर्फ़ ज़ुबानी था”</div>
+                  </div>
+                  <span class="m-btn">✓ <span class="en">Correct</span><span class="hi" lang="hi">सही है</span></span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature">
+            <div class="feature-text">
+              <span class="tag"><span class="en">Bought together</span><span class="hi" lang="hi">मिलकर ख़रीदी</span></span>
+              <h3><span class="en">Property in one name, paid for by many.</span><span class="hi" lang="hi">काग़ज़ एक के नाम, पैसा कई लोगों का।</span></h3>
+              <p><span class="en">For a house or land bought together, write down whose name the papers are in, who paid how much, when and how, and attach the bank transfer or receipt as proof.</span><span class="hi" lang="hi">मिलकर ख़रीदे मकान या ज़मीन के लिए लिखिए कि काग़ज़ किसके नाम हैं, किसने कितना, कब और कैसे दिया, और सबूत के लिए बैंक ट्रांसफ़र या रसीद जोड़िए।</span></p>
+              <ul>
+                <li><span class="en">It totals the payments and tells you if they don't match the price.</span><span class="hi" lang="hi">यह पैसों का जोड़ बताता है, और क़ीमत से मेल न खाए तो बताता है।</span></li>
+                <li><span class="en">It reminds you when someone paid but has no signed note, the kind of gap that turns into a dispute later.</span><span class="hi" lang="hi">अगर किसी ने पैसा दिया पर लिखित काग़ज़ नहीं है, तो याद दिलाता है: ऐसी ही कमी बाद में झगड़ा बनती है।</span></li>
+              </ul>
+            </div>
+            <div class="feature-visual" aria-hidden="true">
+              <div class="phone">
+                <div class="m-title"><span class="en">Patna flat</span><span class="hi" lang="hi">पटना वाला फ़्लैट</span></div>
+                <div class="m-card">
+                  <div class="m-muted"><span class="en">Registered in the name of</span><span class="hi" lang="hi">काग़ज़ों पर किसके नाम है</span></div>
+                  <div class="m-strong">Rajesh Verma</div>
+                  <div class="m-muted" style="margin-top:10px"><span class="en">Who paid how much</span><span class="hi" lang="hi">किसने कितना पैसा दिया</span></div>
+                  <div class="m-strong">Rajesh: ₹ 20,00,000 · <span class="en">Bank / cheque</span><span class="hi" lang="hi">बैंक / चेक से</span></div>
+                  <div class="m-strong">Suresh: ₹ 10,00,000 · <span class="en">Bank / cheque</span><span class="hi" lang="hi">बैंक / चेक से</span> · <span class="m-green"><span class="en">proof attached</span><span class="hi" lang="hi">सबूत जुड़ा है</span></span></div>
+                  <div style="margin-top:6px;font-weight:600"><span class="en">Total ₹ 30,00,000 from 2 payments</span><span class="hi" lang="hi">कुल ₹ 30,00,000 (2 भुगतान)</span></div>
+                </div>
+                <div class="m-card" style="border-color:#ebcf94">
+                  <div class="m-row" style="align-items:flex-start"><span style="color:var(--ochre)">⚠</span><div class="m-muted" style="color:var(--ink)"><span class="en">Suresh paid towards this but it is not in his name. A note signed by everyone helps avoid disputes later.</span><span class="hi" lang="hi">Suresh ने भी पैसा दिया, पर काग़ज़ उनके नाम नहीं हैं। सबके दस्तख़त वाला काग़ज़ बाद के झगड़ों से बचाता है।</span></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature">
+            <div class="feature-text">
+              <span class="tag"><span class="en">Sealed numbers</span><span class="hi" lang="hi">सील बंद नंबर</span></span>
+              <h3><span class="en">Account numbers stay sealed.</span><span class="hi" lang="hi">खाता नंबर सील बंद रहते हैं।</span></h3>
+              <p><span class="en">Account, FD, policy and loan numbers get an extra lock. They show as the last four digits, are never sent to the assistant, and opening one needs a fresh code on your phone. Every time someone looks, it is noted.</span><span class="hi" lang="hi">खाता, FD, पॉलिसी और लोन नंबरों पर एक और ताला लगता है। ये सिर्फ़ आख़िरी चार अंकों में दिखते हैं, सहायक को कभी नहीं भेजे जाते, और खोलने के लिए फ़ोन पर नया कोड चाहिए। जब भी कोई देखता है, वह दर्ज होता है।</span></p>
+            </div>
+            <div class="feature-visual" aria-hidden="true">
+              <div class="phone">
+                <div class="m-title"><span class="en">SBI savings account</span><span class="hi" lang="hi">SBI बचत खाता</span></div>
+                <div class="m-card">
+                  <div class="m-muted"><span class="en">Account number</span><span class="hi" lang="hi">खाता संख्या</span></div>
+                  <div class="m-row" style="justify-content:space-between"><span class="m-seal">🔒 ••••5678</span><span class="m-green"><span class="en">Show</span><span class="hi" lang="hi">दिखाएं</span></span></div>
+                  <div class="m-muted" style="margin-top:6px"><span class="en">Sealed: encrypted, never read by the assistant, only you can see it.</span><span class="hi" lang="hi">सील बंद: एन्क्रिप्टेड, सहायक कभी नहीं पढ़ता, सिर्फ़ आपको दिखता है।</span></div>
+                </div>
+                <div class="m-wa">
+                  <div class="m-strong"><span class="en">Confirm it's you</span><span class="hi" lang="hi">पुष्टि करें कि यह आप हैं</span></div>
+                  <div class="m-muted"><span class="en">Code sent on WhatsApp</span><span class="hi" lang="hi">WhatsApp पर कोड भेजा गया है</span></div>
+                  <div class="m-code">4 8 2 _ _ _</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2c3 .2 5.5 2.6 5.5 5.8"/></svg></div>
+            <h3><span class="en">Your family, your choice</span><span class="hi" lang="hi">परिवार, आपकी पसंद से</span></h3>
+            <p><span class="en">Invite a son, daughter or spouse by phone. You decide which records each one can see.</span><span class="hi" lang="hi">बेटे, बेटी या पत्नी को फ़ोन नंबर से बुलाइए। कौन कौन सा रिकॉर्ड देखेगा, यह आप तय करते हैं।</span></p>
           </div>
-          <div class="card">
-            <h3>Check</h3>
-            <p>Suggestions read from your papers wait for your confirmation. Nothing is saved as true until you say so.</p>
-            <span class="hi" lang="hi">काग़ज़ों से पढ़ी गई हर बात आपकी पुष्टि के बाद ही जुड़ती है।</span>
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>
+            <h3><span class="en">One next step</span><span class="hi" lang="hi">एक अगला काम</span></h3>
+            <p><span class="en">See how ready your family is, and the single most useful thing to do next: a missing nominee, mutation not done, an original paper nobody can find.</span><span class="hi" lang="hi">देखिए परिवार कितना तैयार है, और सबसे ज़रूरी अगला काम: नॉमिनी नहीं, दाख़िल-ख़ारिज बाकी, असली काग़ज़ का पता नहीं।</span></p>
           </div>
-          <div class="card">
-            <h3>Share</h3>
-            <p>Choose which family members can see what. Sensitive numbers stay sealed and every view is recorded.</p>
-            <span class="hi" lang="hi">आप तय करें कि परिवार में कौन क्या देख सकता है।</span>
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8V3h10v5"/><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M7 14h10v7H7z"/></svg></div>
+            <h3><span class="en">Print the family file</span><span class="hi" lang="hi">परिवार की फ़ाइल प्रिंट करें</span></h3>
+            <p><span class="en">A printable summary in Hindi or English, to keep with the original papers in the almirah.</span><span class="hi" lang="hi">हिंदी या English में प्रिंट करने लायक पूरी जानकारी, अलमारी में असली काग़ज़ों के साथ रखने के लिए।</span></p>
+          </div>
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg></div>
+            <h3><span class="en">Download everything</span><span class="hi" lang="hi">सब कुछ डाउनलोड करें</span></h3>
+            <p><span class="en">A full copy of your records, usable even without this app. Your records are never locked in.</span><span class="hi" lang="hi">आपके रिकॉर्ड की पूरी कॉपी, जो इस ऐप के बिना भी काम आए। आपका डेटा कभी बंद नहीं होता।</span></p>
+          </div>
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4z"/></svg></div>
+            <h3><span class="en">Codes on WhatsApp</span><span class="hi" lang="hi">कोड WhatsApp पर</span></h3>
+            <p><span class="en">No passwords to remember. Sign in with your phone number and a code that arrives on WhatsApp.</span><span class="hi" lang="hi">कोई पासवर्ड याद नहीं रखना। फ़ोन नंबर डालिए, WhatsApp पर आए कोड से लॉग-इन कीजिए।</span></p>
+          </div>
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h10l6 6v10H4z"/><path d="M14 4v6h6M8 14h8M8 17h5"/></svg></div>
+            <h3><span class="en">Every change is kept</span><span class="hi" lang="hi">हर बदलाव सुरक्षित</span></h3>
+            <p><span class="en">Editing never overwrites. Each detail keeps its history and where it came from: your word, a registered deed, or a voice note.</span><span class="hi" lang="hi">बदलने पर पुरानी बात मिटती नहीं। हर जानकारी का इतिहास और स्रोत रहता है: आपकी बात, रजिस्टर्ड काग़ज़, या आवाज़ का नोट।</span></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="wrap narrow">
-        <h2>Our promises</h2>
-        <p class="hi-sub" lang="hi">हमारे वादे</p>
-        <ul class="promises">
-          <li>We don't sell your data and we don't show ads.</li>
-          <li>Everything you store is encrypted on our servers. Account numbers and other sealed details get a second layer
-            and are never sent to any AI service.</li>
-          <li>Documents are read by AI only when you agree to it for that file.</li>
-          <li>You can download everything, or ask us to delete it, at any time.</li>
-        </ul>
-        <p>Read the full <a href="privacy.html">privacy policy</a>.</p>
+    <!-- How it works -->
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow"><span class="en">How it works</span><span class="hi" lang="hi">कैसे शुरू करें</span></p>
+          <h2><span class="en">Three steps, at your own pace.</span><span class="hi" lang="hi">तीन क़दम, अपनी रफ़्तार से।</span></h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num"><span class="en">1</span><span class="hi" lang="hi">१</span></div>
+            <h3><span class="en">Sign in with WhatsApp</span><span class="hi" lang="hi">WhatsApp से लॉग-इन</span></h3>
+            <p><span class="en">Enter your mobile number. A six-digit code arrives on WhatsApp. That's your account; no password.</span><span class="hi" lang="hi">मोबाइल नंबर डालिए। WhatsApp पर छह अंकों का कोड आएगा। बस, खाता बन गया; कोई पासवर्ड नहीं।</span></p>
+          </div>
+          <div class="step">
+            <div class="step-num"><span class="en">2</span><span class="hi" lang="hi">२</span></div>
+            <h3><span class="en">Add one thing</span><span class="hi" lang="hi">एक चीज़ जोड़िए</span></h3>
+            <p><span class="en">Photograph a paper, speak a voice note, or fill a short form. Start with the one that worries you most.</span><span class="hi" lang="hi">काग़ज़ की फ़ोटो लीजिए, बोलकर बताइए, या छोटा फ़ॉर्म भरिए। उससे शुरू कीजिए जिसकी सबसे ज़्यादा चिंता है।</span></p>
+          </div>
+          <div class="step">
+            <div class="step-num"><span class="en">3</span><span class="hi" lang="hi">३</span></div>
+            <h3><span class="en">Check it and share it</span><span class="hi" lang="hi">जाँचिए और बताइए</span></h3>
+            <p><span class="en">Confirm what the assistant read, then invite the people who should know. Add more whenever you remember something.</span><span class="hi" lang="hi">सहायक ने जो पढ़ा उसे जाँचिए, फिर जिन्हें पता होना चाहिए उन्हें बुलाइए। जब कुछ याद आए, और जोड़ते रहिए।</span></p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="contact">
+    <!-- Why it matters -->
+    <section>
+      <div class="wrap">
+        <div class="why">
+          <div>
+            <p class="eyebrow"><span class="en">Why it matters</span><span class="hi" lang="hi">यह क्यों ज़रूरी है</span></p>
+            <h2><span class="en">Often, it's all in one person's head.</span><span class="hi" lang="hi">अक्सर सब कुछ एक ही व्यक्ति को याद होता है।</span></h2>
+          </div>
+          <div>
+            <p><span class="en">When that person can no longer tell, the family is left searching: bank by bank, office by office. Most of what they need is a few simple facts that nobody wrote down.</span><span class="hi" lang="hi">जब वह व्यक्ति बता न सके, तो परिवार बैंक-बैंक, दफ़्तर-दफ़्तर भटकता है। ज़्यादातर ज़रूरत कुछ सीधी बातों की होती है, जो किसी ने लिखी नहीं।</span></p>
+            <ul class="why-list">
+              <li><span class="en">Which almirah, which file holds the khatiyan</span><span class="hi" lang="hi">खतियान किस अलमारी, किस फ़ाइल में है</span></li>
+              <li><span class="en">Whether the dakhil-kharij was ever done</span><span class="hi" lang="hi">दाख़िल-ख़ारिज कभी हुआ या नहीं</span></li>
+              <li><span class="en">Who the nominee is on each FD and policy</span><span class="hi" lang="hi">हर FD और पॉलिसी में नॉमिनी कौन है</span></li>
+              <li><span class="en">Who owes whom, and how much</span><span class="hi" lang="hi">किसका कितना उधार किस पर है</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust -->
+    <section id="trust">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow"><span class="en">Safety</span><span class="hi" lang="hi">सुरक्षा</span></p>
+          <h2><span class="en">Why you can trust us with it.</span><span class="hi" lang="hi">हम पर भरोसा क्यों करें।</span></h2>
+        </div>
+        <div class="trust">
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            <h3><span class="en">Encrypted, and kept in India</span><span class="hi" lang="hi">एन्क्रिप्टेड, और भारत में</span></h3>
+            <p><span class="en">Your records are encrypted with a key that belongs to your family, on a server in Mumbai.</span><span class="hi" lang="hi">आपके रिकॉर्ड आपके परिवार की अपनी चाबी से एन्क्रिप्ट होकर मुंबई के सर्वर पर रहते हैं।</span></p>
+          </div>
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3><span class="en">The assistant reads only what you allow</span><span class="hi" lang="hi">सहायक सिर्फ़ वही पढ़ता है जिसकी आप अनुमति दें</span></h3>
+            <p><span class="en">You agree for each file. Sealed numbers are never sent. You can switch the assistant off for the whole family.</span><span class="hi" lang="hi">हर फ़ाइल के लिए आपकी हाँ ज़रूरी है। सील बंद नंबर कभी नहीं भेजे जाते। आप पूरे परिवार के लिए सहायक बंद भी कर सकते हैं।</span></p>
+          </div>
+          <div class="mini">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg></div>
+            <h3><span class="en">We sell nothing, show no ads</span><span class="hi" lang="hi">न कुछ बेचते हैं, न विज्ञापन</span></h3>
+            <p><span class="en">We don't sell your information or push products. You can download everything or have it deleted at any time.</span><span class="hi" lang="hi">हम आपकी जानकारी नहीं बेचते, न कुछ ख़रीदने को कहते हैं। आप कभी भी सब डाउनलोड कर सकते हैं या मिटवा सकते हैं।</span></p>
+          </div>
+        </div>
+        <p class="trust-note">
+          <span class="en">Plainly: so your family can still get in if your phone is lost, the encryption keys are held on our side, which means we are technically able to read your data. We don't, except to help when you ask or when the law requires it. Read the full <a href="privacy.html">privacy policy</a>.</span>
+          <span class="hi" lang="hi">साफ़ शब्दों में: फ़ोन खो जाए तब भी परिवार अंदर आ सके, इसलिए एन्क्रिप्शन की चाबी हमारे पास रहती है, यानी तकनीकी रूप से हम आपका डेटा पढ़ सकते हैं। हम पढ़ते नहीं, सिवाय तब जब आप मदद माँगें या क़ानून कहे। पूरी <a href="privacy.html">प्राइवेसी पॉलिसी</a> पढ़ें।</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section id="questions">
       <div class="wrap narrow">
-        <h2>About us</h2>
-        <p class="hi-sub" lang="hi">हमारे बारे में</p>
-        <dl class="facts">
-          <dt>Business</dt><dd>Family Archive (sole proprietorship)</dd>
-          <dt>Udyam registration</dt><dd>UDYAM-KR-03-0785731</dd>
-          <dt>Based in</dt><dd>Bengaluru, Karnataka, India</dd>
-          <dt>Email</dt><dd><a href="mailto:familyarchive.help@gmail.com">familyarchive.help@gmail.com</a></dd>
-        </dl>
+        <div class="section-head">
+          <p class="eyebrow"><span class="en">Questions</span><span class="hi" lang="hi">सवाल</span></p>
+          <h2><span class="en">What families ask us.</span><span class="hi" lang="hi">परिवार हमसे क्या पूछते हैं।</span></h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary><span class="en">Do I have to scan all my papers?</span><span class="hi" lang="hi">क्या सारे काग़ज़ स्कैन करने होंगे?</span></summary>
+            <p><span class="en">No. Start with one thing, and add the rest when you can. Typing a few details, or saying them in a voice note, is enough. Where the original is kept matters more than a scan.</span><span class="hi" lang="hi">नहीं। एक चीज़ से शुरू कीजिए, बाकी जब समय मिले। कुछ बातें लिख देना या बोलकर बता देना काफ़ी है। स्कैन से ज़्यादा ज़रूरी है कि असली काग़ज़ कहाँ रखा है।</span></p>
+          </details>
+          <details>
+            <summary><span class="en">How do I sign in?</span><span class="hi" lang="hi">लॉग-इन कैसे करें?</span></summary>
+            <p><span class="en">With your mobile number. We send a six-digit code on WhatsApp, and that's it. Each phone you use is remembered, and you can sign any of them out from Settings.</span><span class="hi" lang="hi">अपने मोबाइल नंबर से। हम WhatsApp पर छह अंकों का कोड भेजते हैं, बस। जिस फ़ोन से इस्तेमाल करें वह याद रहता है, और सेटिंग में जाकर किसी भी फ़ोन से लॉग-आउट कर सकते हैं।</span></p>
+          </details>
+          <details>
+            <summary><span class="en">Is the app in Hindi?</span><span class="hi" lang="hi">क्या ऐप हिंदी में है?</span></summary>
+            <p><span class="en">Yes. Every screen is in Hindi and English, and you can switch at any time. Voice notes can be in Hindi, and the assistant writes its notes in your language.</span><span class="hi" lang="hi">हाँ। हर स्क्रीन हिंदी और English दोनों में है, और कभी भी बदल सकते हैं। आवाज़ के नोट हिंदी में हो सकते हैं, और सहायक भी आपकी भाषा में लिखता है।</span></p>
+          </details>
+          <details>
+            <summary><span class="en">Who can see my records?</span><span class="hi" lang="hi">मेरे रिकॉर्ड कौन देख सकता है?</span></summary>
+            <p><span class="en">Only you, and the family members you invite by phone number. You choose which records each person can see. Sealed numbers stay masked even for them.</span><span class="hi" lang="hi">सिर्फ़ आप, और जिन्हें आप फ़ोन नंबर से बुलाएं। कौन कौन सा रिकॉर्ड देखेगा, यह आप तय करते हैं। सील बंद नंबर उनके लिए भी छुपे रहते हैं।</span></p>
+          </details>
+          <details>
+            <summary><span class="en">What does the assistant do with my papers?</span><span class="hi" lang="hi">सहायक मेरे काग़ज़ों के साथ क्या करता है?</span></summary>
+            <p><span class="en">Only when you agree for that file, it reads the photo or voice note and suggests details, each with the words it came from. Nothing is saved until you confirm it. It never takes account or policy numbers.</span><span class="hi" lang="hi">सिर्फ़ जब आप उस फ़ाइल के लिए हाँ कहें, तब वह फ़ोटो या आवाज़ पढ़कर बातें सुझाता है, हर बात के साथ वे शब्द जिनसे वह आई। आपकी पुष्टि के बिना कुछ सेव नहीं होता। खाता या पॉलिसी नंबर वह कभी नहीं लेता।</span></p>
+          </details>
+          <details>
+            <summary><span class="en">What if I lose my phone?</span><span class="hi" lang="hi">फ़ोन खो जाए तो?</span></summary>
+            <p><span class="en">Your records are on our server, not only on the phone. From any other phone where you're signed in, you can sign the lost one out in Settings, or write to us and we'll help.</span><span class="hi" lang="hi">आपके रिकॉर्ड हमारे सर्वर पर हैं, सिर्फ़ फ़ोन में नहीं। जिस दूसरे फ़ोन पर आप लॉग-इन हैं, वहाँ सेटिंग से खोए फ़ोन को लॉग-आउट कर सकते हैं, या हमें लिखें, हम मदद करेंगे।</span></p>
+          </details>
+          <details>
+            <summary><span class="en">Does it cost anything?</span><span class="hi" lang="hi">क्या इसके पैसे लगते हैं?</span></summary>
+            <p><span class="en">It's free during the pilot. If that ever changes, we'll tell you well in advance, and you can always download everything you've written.</span><span class="hi" lang="hi">पायलट के दौरान मुफ़्त है। अगर कभी यह बदला, तो हम पहले से बताएंगे, और आप जो लिखा है वह सब कभी भी डाउनलोड कर सकते हैं।</span></p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing call to action -->
+    <section>
+      <div class="wrap">
+        <div class="cta">
+          <h2><span class="en">Begin with the paper closest to you.</span><span class="hi" lang="hi">जो काग़ज़ सबसे पास रखा है, उसी से शुरू कीजिए।</span></h2>
+          <p><span class="en">A passbook or a policy takes about two minutes: one photo, a quick check, and your family will know it exists.</span><span class="hi" lang="hi">एक पासबुक या पॉलिसी में लगभग दो मिनट लगते हैं: एक फ़ोटो, थोड़ी जाँच, और परिवार को पता रहेगा कि यह है।</span></p>
+          <a class="btn btn-light" href="https://familyarchives.duckdns.org/"><span class="en">Start your family's record</span><span class="hi" lang="hi">परिवार का रिकॉर्ड शुरू करें</span> →</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <p>© 2026 Family Archive, Bengaluru</p>
-      <p><a href="privacy.html">Privacy policy</a> · <a href="mailto:familyarchive.help@gmail.com">familyarchive.help@gmail.com</a></p>
+      <div class="foot">
+        <div>
+          <a class="brand" href="./"><svg class="brand-mark" aria-hidden="true"><use href="#logo"/></svg>Family Archive</a>
+          <p class="foot-about"><span class="en">A safe place for what your family owns, owes and knows.</span><span class="hi" lang="hi">परिवार की संपत्ति, लेन-देन और ज़रूरी बातों के लिए एक सुरक्षित जगह।</span></p>
+        </div>
+        <div>
+          <h4><span class="en">Family Archive</span><span class="hi" lang="hi">Family Archive</span></h4>
+          <ul>
+            <li><a href="https://familyarchives.duckdns.org/"><span class="en">Open the app</span><span class="hi" lang="hi">ऐप खोलें</span></a></li>
+            <li><a href="#how"><span class="en">How it works</span><span class="hi" lang="hi">कैसे शुरू करें</span></a></li>
+            <li><a href="#trust"><span class="en">Safety</span><span class="hi" lang="hi">सुरक्षा</span></a></li>
+            <li><a href="#questions"><span class="en">Questions</span><span class="hi" lang="hi">सवाल</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <h4><span class="en">Legal</span><span class="hi" lang="hi">क़ानूनी</span></h4>
+          <ul>
+            <li><a href="privacy.html"><span class="en">Privacy policy</span><span class="hi" lang="hi">प्राइवेसी पॉलिसी</span></a></li>
+            <li><a href="privacy.html#rights"><span class="en">Delete your data</span><span class="hi" lang="hi">अपना डेटा मिटवाएं</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <h4><span class="en">Contact</span><span class="hi" lang="hi">संपर्क</span></h4>
+          <ul>
+            <li><a href="mailto:familyarchive.help@gmail.com">familyarchive.help@gmail.com</a></li>
+            <li><span class="en">Bengaluru, Karnataka, India</span><span class="hi" lang="hi">बेंगलुरु, कर्नाटक, भारत</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>© 2026 Family Archive · <span class="en">Sole proprietorship</span><span class="hi" lang="hi">एकल स्वामित्व</span> · Udyam UDYAM-KR-03-0785731</span>
+        <span><span class="en">Made in India</span><span class="hi" lang="hi">भारत में बना</span></span>
+      </div>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('lang-toggle').addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-lang') === 'hi' ? 'en' : 'hi';
+      document.documentElement.setAttribute('data-lang', next);
+      document.documentElement.setAttribute('lang', next);
+      try { localStorage.setItem('fa-lang', next); } catch (e) {}
+    });
+  </script>
 </body>
 </html>

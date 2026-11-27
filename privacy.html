@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy · Family Archive</title>
+  <title>Privacy policy · Family Archive</title>
   <meta name="description" content="How Family Archive collects, uses, protects and deletes your information.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,16 +12,25 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f5d50'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-  <header class="top">
-    <div class="wrap">
-      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">F</span>Family Archive</a>
-      <nav aria-label="Main">
-        <a href="./">Home</a>
-        <a href="privacy.html" aria-current="page">Privacy</a>
-        <a href="./#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="16" fill="#2f5d50"/>
+      <text x="32" y="45" font-family="Georgia, serif" font-size="38" fill="#fff" text-anchor="middle">F</text>
+    </symbol>
+  </svg>
+  <div class="nav-shell">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="./"><svg class="brand-mark" aria-hidden="true"><use href="#logo"/></svg>Family Archive</a>
+      <div class="nav-links">
+        <a href="./#features">What it does</a>
+        <a href="./#trust">Safety</a>
+        <a href="./#questions">Questions</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="https://familyarchives.duckdns.org/">Open the app</a>
+      </div>
+    </nav>
+  </div>
 
   <main class="wrap policy">
     <h1>Privacy policy</h1>
@@ -101,7 +110,7 @@
     <p>We keep your archive for as long as your family's account exists, because its purpose is to be there years later.
       Sign-in codes expire after 5 minutes and are then useless. Original documents are never changed once uploaded.</p>
 
-    <h2>Your choices and rights</h2>
+    <h2 id="rights">Your choices and rights</h2>
     <p>Under India's Digital Personal Data Protection Act, 2023, you can:</p>
     <ul>
       <li>see and download everything we hold about you (the app's export does this);</li>
@@ -126,8 +135,10 @@
 
   <footer>
     <div class="wrap">
-      <p>© 2026 Family Archive, Bengaluru</p>
-      <p><a href="./">Home</a> · <a href="mailto:familyarchive.help@gmail.com">familyarchive.help@gmail.com</a></p>
+      <div class="foot-base" style="margin-top:0;border-top:0;padding-top:0">
+        <span>© 2026 Family Archive · Sole proprietorship · Udyam UDYAM-KR-03-0785731 · Bengaluru, India</span>
+        <span><a href="./">Home</a> · <a href="mailto:familyarchive.help@gmail.com">familyarchive.help@gmail.com</a></span>
+      </div>
     </div>
   </footer>
 </body>
